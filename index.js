@@ -34,7 +34,24 @@ function checkAnswer(currentLevel){
     }
   }
   else {
-    console.log("failure ")
+
+    var audiof = new Audio("sounds/wrong.mp3")
+    audiof.play()
+    $("body").addClass("game-over")
+    setTimeout(function(){
+      $("body").removeClass("game-over")
+    }, 800)
+    $("h1").text("Failed ! Your Score is: "+level)
+
+
+    gamePattern=[]
+    setTimeout(function(){
+      $("h1").text("Press any key to restart")
+    }, 2000)
+    $(document).keypress(function(){
+      level =0
+      nextSequence()
+    })
   }
 }
 
